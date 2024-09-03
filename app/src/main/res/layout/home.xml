@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login"
+    android:id="@+id/main"
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/green_bg_foreground"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/container"
+            >
+
+            <!-- Include the repeated item layout -->
+            <include
+                layout="@layout/item_layout" />
+            <include
+                layout="@layout/item_layout" />
+            <include
+                layout="@layout/item_layout" />
+            <include
+                layout="@layout/item_layout" />
+            <include
+                layout="@layout/item_layout" />
+            <include
+                layout="@layout/item_layout" />
+            <include
+                layout="@layout/item_layout" />
+            <include
+                layout="@layout/item_layout" />
+            <include
+                layout="@layout/item_layout" />
+            <include
+                layout="@layout/item_layout" />
+            <include
+                layout="@layout/item_layout" />
+            <include
+                layout="@layout/item_layout" />
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
