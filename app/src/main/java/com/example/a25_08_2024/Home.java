@@ -12,6 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Home extends AppCompatActivity {
     LinearLayout container;
@@ -27,47 +32,20 @@ public class Home extends AppCompatActivity {
             return insets;
         });
 
-        container = findViewById(R.id.container);
-        for (int i = 0; i < container.getChildCount(); i++) {
-            View card = container.getChildAt(i);
+        List<Item> items = new ArrayList<>();
+        items.add(new Item(R.drawable.a, 3.5f, "Alex Martinez", "Senior Software Engineer \n(555) 123-4567"));
+        items.add(new Item(R.drawable.b, 5f, "Jordan Lee", "Product Manager \n(555) 234-5678"));
+        items.add(new Item(R.drawable.c, 4f, "Barry Lyon", "Chief Technology Officer \n(555) 345-6789"));
+        items.add(new Item(R.drawable.d, 5f, "Morgan Davis", "DevOps Engineer \n(555) 456-7890"));
+        items.add(new Item(R.drawable.e, 4.5f, "Casey Wilson", "Data Scientist \n(555) 567-8901"));
+        items.add(new Item(R.drawable.f, 2f, "Riley Johnson", "Front-End Developer \n(555) 678-9012"));
+        items.add(new Item(R.drawable.g, 3f, "Quinn Patel", "Backend Developer \n(555) 789-0123"));
+        items.add(new Item(R.drawable.h, 3f, "Charlie Nguyen", "Systems Architect \n(555) 890-1234"));
+        items.add(new Item(R.drawable.i, 4f, "Avery Kim", "QA Engineer \n(555) 901-2345"));
+        items.add(new Item(R.drawable.j, 5f, "Jamie Clark", "Technical Support Specialist \n(555) 012-3456"));
 
-            if (card instanceof LinearLayout) {
-                card.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        RatingBar ratingBar = null;
-
-                        // Find the RatingBar inside the clicked card
-                        for (int j = 0; j < ((LinearLayout) card).getChildCount(); j++) {
-                            View child = ((LinearLayout) card).getChildAt(j);
-                            if (child instanceof RatingBar) {
-                                ratingBar = (RatingBar) child;
-                                break;
-                            } else if (child instanceof LinearLayout){
-                                for (int k = 0; j < ((LinearLayout) child).getChildCount(); k++) {
-                                    View secondChild = ((LinearLayout) child).getChildAt(k);
-                                    if (secondChild instanceof RatingBar) {
-                                        ratingBar = (RatingBar) secondChild;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-
-                        // Get the filled stars and pass it in the Intent
-                        if (ratingBar != null) {
-                            float stars = ratingBar.getRating(); // Get the filled stars
-                            Intent intent = new Intent(Home.this, Card.class);
-                            intent.putExtra("RATING", stars);
-                            startActivity(intent);
-                        } else {
-                            // No RatingBar found, just start the activity
-                            Intent intent = new Intent(Home.this, Card.class);
-                            startActivity(intent);
-                        }
-                    }
-                });
-            }
-        }
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new MyAdapter(getApplicationContext(),items));
     }
 }

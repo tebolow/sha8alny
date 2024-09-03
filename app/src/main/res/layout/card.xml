@@ -40,7 +40,9 @@
             android:text="Barry Lyon"
             android:gravity="center_horizontal"
             android:textSize="42sp"
-            android:layout_marginTop="30dp" />
+            android:layout_marginTop="30dp"
+            android:id="@+id/cardName"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -49,14 +51,18 @@
             android:text="Position: Chief Technology Officer"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginHorizontal="10dp" />
+            android:layout_marginHorizontal="10dp"
+            android:id="@+id/position"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:text="Phone: (202) 555-0193"
-            android:layout_margin="10dp" />
+            android:layout_margin="10dp"
+            android:id="@+id/phone"
+            />
 
         <TextView
             android:layout_width="wrap_content"

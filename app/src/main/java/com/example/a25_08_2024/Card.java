@@ -1,9 +1,12 @@
 package com.example.a25_08_2024;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +14,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class Card extends AppCompatActivity {
-    RatingBar rating;
+    CircleImageView imageView;
+    RatingBar ratingBar;
+    TextView nameTextView, titleTextView, phone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +30,23 @@ public class Card extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        rating = findViewById(R.id.rating);
-        float stars = getIntent().getFloatExtra("RATING", 0f);
-        rating.setRating(stars);
+        ratingBar = findViewById(R.id.rating);
+        imageView = findViewById(R.id.circularImageView);
+        nameTextView = findViewById(R.id.cardName);
+        titleTextView = findViewById(R.id.position);
+        phone = findViewById(R.id.phone);
+        Intent intent = getIntent();
+        float rating = intent.getFloatExtra("RATING", 0f);
+        String name = intent.getStringExtra("NAME");
+        String title = intent.getStringExtra("TITLE");
+        int imageResId = intent.getIntExtra("IMAGE", -1);
+        if (imageResId != -1) {
+            imageView.setImageResource(imageResId);
+        }
+        ratingBar.setRating(rating);
+        nameTextView.setText(name);
+        String[] positionAndPone = title.split("\n");
+        titleTextView.setText("Position: " + positionAndPone[0]);
+        phone.setText("Phoen: " + positionAndPone[1]);
     }
 }

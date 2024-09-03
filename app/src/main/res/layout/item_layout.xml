@@ -6,9 +6,11 @@
     android:weightSum="3"
     android:layout_margin="20dp"
     android:background="@color/white"
+    style="@style/myStyle2"
     >
 
     <ImageView
+        android:id="@+id/idImg"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:src="@mipmap/id_foreground"
@@ -21,19 +23,28 @@
         android:layout_weight="2">
 
         <TextView
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Barry Lyon"
             android:textSize="22sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:textColor="#2196F3"
+            />
 
         <TextView
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Barry Lyon \n Chief Technology Officer \n (202) 555-0193"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:fontFamily="monospace"
+            android:textColor="#2196F3"
+            />
 
         <RatingBar
+            android:id="@+id/ratingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"

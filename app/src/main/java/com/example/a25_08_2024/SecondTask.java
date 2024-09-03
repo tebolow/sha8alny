@@ -14,6 +14,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class SecondTask extends AppCompatActivity {
     Button login;
     Button register;
@@ -38,8 +43,13 @@ public class SecondTask extends AppCompatActivity {
                 if (username.getText().toString().isEmpty() || password.getText().toString().isEmpty()){
                     Toast.makeText(SecondTask.this, "Please fill required fields", Toast.LENGTH_LONG).show();
                 } else {
-                    Intent intent = new Intent(SecondTask.this, Home.class);
-                    startActivity(intent);
+                    if (validateUser(username.getText().toString(), password.getText().toString())) {
+                        Intent intent = new Intent(SecondTask.this, Home.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(SecondTask.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
         });
@@ -50,5 +60,24 @@ public class SecondTask extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private boolean validateUser(String username, String password) {
+        String fileName = "accounts.txt";
+        try (FileInputStream fis = openFileInput(fileName);
+             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                Log.d("username", parts[0]);
+                Log.d("password", parts[1]);
+                if (parts.length == 2 && parts[0].equals(username) && parts[1].equals(password)) {
+                    return true; // User is valid
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false; // User not found or password mismatch
     }
 }

@@ -15,40 +15,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/container"
-            >
-
-            <!-- Include the repeated item layout -->
-            <include
-                layout="@layout/item_layout" />
-            <include
-                layout="@layout/item_layout" />
-            <include
-                layout="@layout/item_layout" />
-            <include
-                layout="@layout/item_layout" />
-            <include
-                layout="@layout/item_layout" />
-            <include
-                layout="@layout/item_layout" />
-            <include
-                layout="@layout/item_layout" />
-            <include
-                layout="@layout/item_layout" />
-            <include
-                layout="@layout/item_layout" />
-            <include
-                layout="@layout/item_layout" />
-            <include
-                layout="@layout/item_layout" />
-            <include
-                layout="@layout/item_layout" />
-
-        </LinearLayout>
+            android:id="@+id/recycler_view"
+            style="@style/myStyle2"
+            android:layout_marginTop="20dp"
+            />
     </ScrollView>
 </FrameLayout>
